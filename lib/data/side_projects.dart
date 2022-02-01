@@ -26,11 +26,11 @@ final List<Project> sideProjects = [
     ),
   ),
   Project(
-    name: "Sked + Beckend",
+    name: "Sked + Backend",
     description:
         "Application and server that give students and teachers of State University of Telecommunications access to their lessons schedule. All schedule is stored in a database and is automatically updated once per day.",
     keyPoints: [
-      "Designed API and developed beckend for schedule parsing",
+      "Designed API and developed backend for schedule parsing",
       "Set up CI using Github Actions",
       "Reached 4.8 rate in Play Store and 99.9% of crash-free users",
     ],

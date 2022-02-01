@@ -72,7 +72,7 @@ final List<Workplace> workplaces = [
         "E-commerce app for Mall.Global.",
         keyPoints: [
           "Developed internal library for building GraphQL queries using nice DSL",
-          "Made a few proposals on how we can improve the beckend API",
+          "Made a few proposals on how we can improve the backend API",
           "Designed and developed customer and admin applications in pair with other developer",
           "Created two POC apps showing how product can leverage bluetooth beacons",
         ],
@@ -124,7 +124,7 @@ final List<Workplace> workplaces = [
         "Trelp is a crowd-sourcing platform for US truck drivers to improve their experience using custom interactive last-mile directions tool.",
         keyPoints: [
           "Designed and developed the entire app from scratch - from concept creation to Play Store deployment",
-          "Created requirements for the beckend API",
+          "Created requirements for the backend API",
           "Made several custom UI components",
         ],
         technologies: [
