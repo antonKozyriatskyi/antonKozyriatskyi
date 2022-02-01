@@ -18,7 +18,7 @@ class AboutMeSection extends StatelessWidget {
       title: title,
       child: SelectableText(
         description,
-        style: context.textTheme().bodyText1,
+        style: context.textTheme().subtitle1,
       ),
     );
   }
