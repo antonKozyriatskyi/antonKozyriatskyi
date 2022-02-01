@@ -36,4 +36,4 @@ rm -r web/assets
 echo ""
 echo "-- Deploy finished"
 
-$SHELL
+sleep 10
