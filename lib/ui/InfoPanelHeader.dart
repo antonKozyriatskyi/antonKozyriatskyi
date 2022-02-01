@@ -14,7 +14,6 @@ class InfoPanelHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme();
     final textTheme = theme.primaryTextTheme;
-    final colorScheme = theme.colorScheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -24,7 +23,7 @@ class InfoPanelHeader extends StatelessWidget {
           textAlign: TextAlign.center,
           style: textTheme.headline5,
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         SizedBox(
           width: 24,
           child: Divider(
@@ -32,11 +31,11 @@ class InfoPanelHeader extends StatelessWidget {
             thickness: 2,
           ),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         SelectableText(
           profile.position.toUpperCase(),
           textAlign: TextAlign.center,
-          style: textTheme.caption!.copyWith(color: colorScheme.onPrimary),
+          style: textTheme.caption,
         )
       ],
     );
