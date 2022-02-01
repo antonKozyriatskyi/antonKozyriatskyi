@@ -2,6 +2,11 @@
 
 set -e
 
+echo "-- Copying assets to web folder"
+echo ""
+
+cp -r assets web/assets
+
 echo "-- Building the app"
 echo ""
 
@@ -23,8 +28,12 @@ echo ""
 git push
 
 echo ""
-echo "-- Deploy finished"
+echo "-- Clean up"
 
 cd ../..
+rm -r web/assets
+
+echo ""
+echo "-- Deploy finished"
 
 $SHELL
