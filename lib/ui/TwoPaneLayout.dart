@@ -55,9 +55,10 @@ class _TwoPaneLayoutState extends State<TwoPaneLayout> {
         final children = [
           Container(
             color: widget.leftPanelBackgroundColor ?? context.theme().primaryColor,
-            constraints: BoxConstraints.tightFor(
-              width: lChildWidth,
-              height: maxHeight
+            constraints: BoxConstraints(
+              minWidth: lChildWidth,
+              maxWidth: lChildWidth,
+              minHeight: maxHeight
             ),
             child: isLandscape
                 ? SingleChildScrollView(
@@ -66,8 +67,10 @@ class _TwoPaneLayoutState extends State<TwoPaneLayout> {
                 : _leftChild,
           ),
           ConstrainedBox(
-            constraints: BoxConstraints.tightFor(
-              width: rChildWidth,
+            constraints: BoxConstraints(
+                minWidth: rChildWidth,
+                maxWidth: rChildWidth,
+                minHeight: maxHeight
             ),
             child: isLandscape
                 ? SingleChildScrollView(
