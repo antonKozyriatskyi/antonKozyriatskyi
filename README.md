@@ -1,6 +1,4 @@
-# Personal website
+#### Hello there!
+I'm an Android Engineer from Ukraine.
 
-[antonKozyriatskyi.github.io](https://antonkozyriatskyi.github.io/)
-
-
-[Repo](https://github.com/antonKozyriatskyi/antonKozyriatskyi.github.io)
+Learn more at [antonKozyriatskyi.github.io](https://antonkozyriatskyi.github.io/)
