@@ -36,7 +36,7 @@ class WorkplaceTile extends StatelessWidget {
             const SizedBox(width: 8),
             Text(
               "${dateFormatter.format(workplace.startDate)} - ${endDate != null ? dateFormatter.format(endDate) : "Now"}",
-              style: textTheme.bodyText1,
+              style: textTheme.bodyText2,
             ),
           ],
         ),
