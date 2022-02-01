@@ -27,7 +27,7 @@ class WorkplaceTile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       // mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
+        Wrap(
           children: [
             Text(
               workplace.company,
