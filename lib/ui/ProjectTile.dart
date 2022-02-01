@@ -1,16 +1,18 @@
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as js;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:anton_kozyriatskyi/ext/BuildContext.dart';
 import 'package:anton_kozyriatskyi/ext/List.dart';
 import 'package:anton_kozyriatskyi/models/all_models.dart';
+import 'package:collection/collection.dart';
 
 class ProjectTile extends StatelessWidget {
   final Project project;
 
-  ProjectTile({
+  const ProjectTile({
     Key? key,
     required this.project,
   }) : super(key: key);
@@ -27,12 +29,12 @@ class ProjectTile extends StatelessWidget {
           project.name,
           style: textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           project.description,
           style: textTheme.bodyText2,
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         if (project.keyPoints.isNotEmpty) ..._buildKeyPoints(),
         if (project.technologies.isNotEmpty) ..._buildTechnologies(),
         if (project.links != null) _buildLinks(project.links!),
@@ -41,17 +43,20 @@ class ProjectTile extends StatelessWidget {
   }
 
   List<Widget> _buildKeyPoints() => [
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: project.keyPoints.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: index == project.keyPoints.length - 1 ? 0 : 1),
-              child: Text("• ${project.keyPoints[index]}"),
-            );
-          },
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: project.keyPoints
+              .mapIndexed(
+                (index, element) => Padding(
+                  padding: EdgeInsets.only(
+                      bottom: index == project.keyPoints.length - 1 ? 0 : 1),
+                  child: Text("• ${project.keyPoints[index]}"),
+                ),
+              )
+              .toList(growable: false),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
       ];
 
   List<Widget> _buildTechnologies() {
@@ -60,8 +65,8 @@ class ProjectTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Text("Tech stack:"),
-          SizedBox(width: 4),
+          const Text("Tech stack:"),
+          const SizedBox(width: 4),
           Flexible(
             child: Text(
               project.technologies.join(", "),
@@ -69,7 +74,7 @@ class ProjectTile extends StatelessWidget {
           ),
         ],
       ),
-      SizedBox(height: 4),
+      const SizedBox(height: 4),
     ];
   }
 
@@ -78,30 +83,30 @@ class ProjectTile extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text("Download: "),
-              SizedBox(width: 4),
-            ]..addAll(
-                [
-                  _Pair(links.playStore, "google_play_logo.svg"),
-                  _Pair(links.appStore, "app_store_logo.svg"),
-                ]
-                    .where((element) => element.first != null)
-                    .map(
-                      (link) => _buildLink(
-                        link.first!,
-                        link.second,
-                        () => _openUrl(link.first!, true),
-                      ),
-                    )
-                    .separated(() => Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 4),
-                          child: Text("/"),
-                        ))
-                    .toList(),
-              )),
-        SizedBox(height: 4),
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const Text("Download: "),
+            const SizedBox(width: 4),
+            ...[
+              _Pair(links.playStore, "google_play_logo.svg"),
+              _Pair(links.appStore, "app_store_logo.svg"),
+            ]
+                .where((element) => element.first != null)
+                .map(
+                  (link) => _buildLink(
+                    link.first!,
+                    link.second,
+                    () => _openUrl(link.first!, true),
+                  ),
+                )
+                .separated(() => const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4),
+                      child: Text("/"),
+                    ))
+                .toList(),
+          ],
+        ),
+        const SizedBox(height: 4),
       ],
     );
   }

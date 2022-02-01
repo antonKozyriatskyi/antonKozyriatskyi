@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:anton_kozyriatskyi/models/LanguageKnowledge.dart';
-import 'package:anton_kozyriatskyi/models/Profile.dart';
 import 'package:anton_kozyriatskyi/ui/InfoSection.dart';
-import 'package:anton_kozyriatskyi/ui/WorkplaceTile.dart';
-
-import 'ContentLayout.dart';
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
 
 class LanguageSection extends StatelessWidget {
   final String title;
@@ -20,23 +17,17 @@ class LanguageSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return InfoSection(
       title,
-      [
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: languageKnowledge.length,
-          itemBuilder: (context, index) {
-            final isLast = index == languageKnowledge.length - 1;
-            final knowledge = languageKnowledge[index];
-            return Padding(
-              padding: EdgeInsets.only(bottom: isLast ? 0 : 8),
-              child: SelectableText(
-                "${knowledge.language} - ${knowledge.level}",
-                style: Theme.of(context).primaryTextTheme.subtitle1,
-              ),
-            );
-          },
-        ),
-      ],
+      languageKnowledge.mapIndexed<Widget>((index, element) {
+        final isLast = index == languageKnowledge.length - 1;
+        final knowledge = languageKnowledge[index];
+        return Padding(
+          padding: EdgeInsets.only(bottom: isLast ? 0 : 8),
+          child: SelectableText(
+            "${knowledge.language} - ${knowledge.level}",
+            style: Theme.of(context).primaryTextTheme.subtitle1,
+          ),
+        );
+      }).toList(growable: false),
     );
   }
 }

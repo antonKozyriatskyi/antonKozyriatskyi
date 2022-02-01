@@ -4,6 +4,7 @@ import 'package:anton_kozyriatskyi/ext/BuildContext.dart';
 import 'package:anton_kozyriatskyi/models/Project.dart';
 import 'package:anton_kozyriatskyi/models/Workplace.dart';
 import 'package:anton_kozyriatskyi/ui/ProjectTile.dart';
+import 'package:collection/collection.dart';
 
 class WorkplaceTile extends StatelessWidget {
   final Workplace workplace;
@@ -32,16 +33,16 @@ class WorkplaceTile extends StatelessWidget {
               workplace.company,
               style: textTheme.headline6,
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Text(
               "${dateFormatter.format(workplace.startDate)} - ${endDate != null ? dateFormatter.format(endDate) : "Now"}",
               style: textTheme.bodyText1,
             ),
           ],
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         Padding(
-          padding: EdgeInsets.only(left: 8),
+          padding: const EdgeInsets.only(left: 8),
           child: _buildProjectsList(context),
         ),
       ],
@@ -49,17 +50,19 @@ class WorkplaceTile extends StatelessWidget {
   }
 
   Widget _buildProjectsList(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: projects.length,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: EdgeInsets.only(
-            bottom: index != projects.length - 1 ? 16 : 0,
-          ),
-          child: ProjectTile(project: projects[index]),
-        );
-      },
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: projects.mapIndexed<Widget>(
+        (index, project) {
+          return Padding(
+            padding: EdgeInsets.only(
+              bottom: index != projects.length - 1 ? 16 : 0,
+            ),
+            child: ProjectTile(project: project),
+          );
+        },
+      ).toList(growable: false),
     );
   }
 }

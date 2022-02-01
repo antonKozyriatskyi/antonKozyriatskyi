@@ -13,12 +13,13 @@ class InfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             title,
             style: Theme.of(context).primaryTextTheme.headline6
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ...children,
         ],
       );

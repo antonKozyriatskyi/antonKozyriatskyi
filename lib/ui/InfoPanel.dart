@@ -13,18 +13,20 @@ class InfoPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 48, horizontal: 64),
+      padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 64),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Align(
             alignment: Alignment.center,
             child: InfoPanelHeader(profile: profile),
           ),
-          SizedBox(height: 48),
+          const SizedBox(height: 48),
           ContactsSection(contacts: profile.contacts),
-          SizedBox(height: 48),
+          const SizedBox(height: 48),
           EducationSection(education: profile.education),
-          SizedBox(height: 48),
+          const SizedBox(height: 48),
           LanguageSection(languageKnowledge: profile.languageKnowledge),
         ],
       ),
