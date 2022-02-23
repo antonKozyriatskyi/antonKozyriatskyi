@@ -1,13 +1,13 @@
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as js;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:anton_kozyriatskyi/ext/BuildContext.dart';
 import 'package:anton_kozyriatskyi/ext/List.dart';
 import 'package:anton_kozyriatskyi/models/all_models.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProjectTile extends StatelessWidget {
   final Project project;
@@ -112,12 +112,15 @@ class ProjectTile extends StatelessWidget {
   }
 
   Widget _buildLink(String link, String icon, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: SvgPicture.asset(
-        icon,
-        width: 24,
-        height: 24,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: onTap,
+        child: SvgPicture.asset(
+          icon,
+          width: 24,
+          height: 24,
+        ),
       ),
     );
   }
