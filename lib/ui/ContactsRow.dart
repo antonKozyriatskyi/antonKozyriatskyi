@@ -32,12 +32,15 @@ class ContactRow extends StatelessWidget {
             color: iconColor,
           ),
         SizedBox(width: 16),
-        GestureDetector(
-          onTap: () => onTap(text),
-          // onTapDown: (details) => onTap(text),
-          child: Text(
-            text,
-            style: Theme.of(context).primaryTextTheme.subtitle1,
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: () => onTap(text),
+            // onTapDown: (details) => onTap(text),
+            child: Text(
+              text,
+              style: Theme.of(context).primaryTextTheme.subtitle1,
+            ),
           ),
         )
       ],
