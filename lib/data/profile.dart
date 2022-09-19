@@ -11,7 +11,7 @@ part 'side_projects.dart';
 final MyProfile = Profile(
   name: "Anton",
   surname: "Kozyriatskyi",
-  aboutMe: "I'm a mobile engineer with over 5 years of experience.\nDuring my career I had a chance to work on both native and cross-platform applications of various complexity, starting from simple client-server application to interactive apps with maps and custom UI components and rich and configurable feature-libraries.\nI also have experience writing backend with Ktor and creating simple web app using Flutter.\nMy last 2 years I've been working on fin-tech products.",
+  aboutMe: "I'm a mobile engineer with over ${_calculateYearsOfExperience()} years of experience.\nDuring my career I had a chance to work on both native and cross-platform applications of various complexity, starting from simple client-server application to interactive apps with maps and custom UI components and rich and configurable feature-libraries.\nI also have experience writing backend with Ktor and creating simple web app using Flutter.\nMy last 2 years I've been working on fin-tech products.",
   position: "Android Engineer",
   contacts: contacts,
   education: education,
@@ -19,3 +19,11 @@ final MyProfile = Profile(
   workplaces: workplaces,
   sideProjects: sideProjects,
 );
+
+int _calculateYearsOfExperience() {
+  final now = DateTime.now();
+  final careerStart = DateTime(2016, 06);
+  final years = now.difference(careerStart).inDays / 365;
+
+  return years.floor();
+}
